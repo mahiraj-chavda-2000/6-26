@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16th</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .container2 {
+            padding-top: 10px;
+        }
+
+        .container1 {
+            padding-top: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container2">
+        <button class="js-programmatic-open">Open</button>
+        <button class="js-programmatic-set-val">Set "California"</button>
+        <button class="js-programmatic-close">Close</button>
+        <div class = "btn-group">
+            <button class="js-programmatic-init">Init</button>
+            <button class="js-programmatic-destroy">Distroy</button> 
+        </div>
+        <br><br>
+        <select class="js-example-programmatic" name="state" style="width: 20%">
+            <optgroup label="Alaskas/Hawalian Time Zone">
+                <option value="ALS">Alaska</option>
+                <option value="HA">Havai</option>
+            </optgroup>
+            <optgroup label="Pacific Time Zone">
+                <option value="CA">California</option>
+                <option value="NE">Nevada</option>
+                <option value="OR">Oregon</option>
+            </optgroup>
+            <optgroup label="Mountain Time Zone">
+                <option value="CO">Colorado</option>
+                <option value="ID">Idhaho</option>
+                <option value="NM">New Maxico</option>
+            </optgroup>
+        </select>
+
+        <br>
+       
+      
+
+    </div>
+
+    <div class="container1">
+        <select class="js-example-programmatic-multi" name="states[]" multiple="multiple" style="width: 50%">
+              <optgroup label="Alaskas/Hawalian Time Zone">
+                <option value="AL">Alaska</option>
+                <option value="HA">Havai</option>
+            </optgroup>
+            <optgroup label="Pacific Time Zone">
+                <option value="CA">California</option>
+                <option value="NE">Nevada</option>
+                <option value="OR">Oregon</option>
+            </optgroup>
+            <optgroup label="Mountain Time Zone">
+                <option value="CO">Colorado</option>
+                <option value="ID">Idhaho</option>
+                <option value="NM">New Maxico</option>
+            </optgroup>
+        </select>
+        <br> <br>
+        <button class="js-programmatic-multi-set-val">Set to California and Alaska</button>
+        <button class="js-programmatic-multi-clear">clear</button>
+
+
+    </div>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        // $(document).ready(function () {
+        //     $('.js-example-basic-single').select2();
+        //     theme: "classic"
+        //     width: 'resolve'
+        // });
+        // $(document).ready(function () {
+        //     $('.js-example-basic-multiple').select2({
+        //         theme: "classic",
+        //         maximumSelectionLength: 2
+        //     });
+
+        // });
+        var $example = $(".js-example-programmatic").select2();
+        var $exampleMulti = $(".js-example-programmatic-multi").select2();
+
+        $(".js-programmatic-set-val").on("click", function () {
+            $example.val("CA").trigger("change");
+        });
+
+        $(".js-programmatic-open").on("click", function () {
+            $example.select2("open");
+        });
+
+        $(".js-programmatic-close").on("click", function () {
+            $example.select2("close");
+        });
+
+        $(".js-programmatic-init").on("click", function () {
+            $example.select2();
+        });
+
+        $(".js-programmatic-destroy").on("click", function () {
+            $example.select2("destroy");
+        });
+
+        $(".js-programmatic-multi-set-val").on("click", function () {
+            $exampleMulti.val(["CA", "AL" ,"ID"]).trigger("change");
+        });
+
+        $(".js-programmatic-multi-clear").on("click", function () {
+            $exampleMulti.val(null).trigger("change");
+        });
+
+    </script>
+
+
+</body>
+
+</html>
